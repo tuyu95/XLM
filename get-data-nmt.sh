@@ -151,7 +151,33 @@ fi
 
 cd $MONO_PATH
 
-if [ "$SRC" == "de" -o "$TGT" == "de" ]; then
+if [ "$SRC" == "gu" -o "$TGT" == "gu" ]; then
+  echo "Downloading Gujarati monolingual data ..."
+  mkdir -p $MONO_PATH/gu
+  cd $MONO_PATH/gu
+  wget -c http://data.statmt.org/news-crawl/gu/news.2018.gu.shuffled.deduped.gz
+  wget -c http://data.statmt.org/news-crawl/gu/news.2019.M1-M4.gu.shuffled.deduped.gz
+  # wget -c http://data.statmt.org/wmt19/translation-task/wiki/wiki.2018.gu.filtered.gz
+fi
+
+if [ "$SRC" == "en" -o "$TGT" == "en" ]; then
+  echo "Downloading English monolingual data ..."
+  mkdir -p $MONO_PATH/en
+  cd $MONO_PATH/en
+  # wget -c http://data.statmt.org/news-crawl/en/news.2007.en.shuffled.deduped.gz
+  # wget -c http://data.statmt.org/news-crawl/en/news.2008.en.shuffled.deduped.gz
+  # wget -c http://data.statmt.org/news-crawl/en/news.2009.en.shuffled.deduped.gz
+  # wget -c http://data.statmt.org/news-crawl/en/news.2010.en.shuffled.deduped.gz
+  # wget -c http://data.statmt.org/news-crawl/en/news.2011.en.shuffled.deduped.gz
+  # wget -c http://data.statmt.org/news-crawl/en/news.2012.en.shuffled.deduped.gz
+  # wget -c http://data.statmt.org/news-crawl/en/news.2013.en.shuffled.deduped.gz
+  # wget -c http://data.statmt.org/news-crawl/en/news.2014.en.shuffled.deduped.gz
+  # wget -c http://data.statmt.org/news-crawl/en/news.2015.en.shuffled.deduped.gz
+  # wget -c http://data.statmt.org/news-crawl/en/news.2016.en.shuffled.deduped.gz
+  # wget -c http://data.statmt.org/news-crawl/en/news.2017.en.shuffled.deduped.gz
+  wget -c http://data.statmt.org/news-crawl/en/news.2018.en.shuffled.deduped.gz
+
+'''if [ "$SRC" == "de" -o "$TGT" == "de" ]; then
   echo "Downloading German monolingual data ..."
   mkdir -p $MONO_PATH/de
   cd $MONO_PATH/de
@@ -207,7 +233,7 @@ if [ "$SRC" == "ro" -o "$TGT" == "ro" ]; then
   mkdir -p $MONO_PATH/ro
   cd $MONO_PATH/ro
   wget -c http://data.statmt.org/wmt16/translation-task/news.2015.ro.shuffled.gz
-fi
+fi'''
 
 cd $MONO_PATH
 
@@ -332,7 +358,8 @@ echo "$TGT binarized data in: $TGT_TRAIN_BPE.pth"
 cd $PARA_PATH
 
 echo "Downloading parallel data..."
-wget -c http://data.statmt.org/wmt18/translation-task/dev.tgz
+# wget -c http://data.statmt.org/wmt18/translation-task/dev.tgz
+wget -c http://data.statmt.org/wmt19/translation-task/dev.tgz
 
 echo "Extracting parallel data..."
 tar -xzf dev.tgz
