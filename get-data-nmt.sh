@@ -126,16 +126,16 @@ PARA_TGT_TEST_BPE=$PROC_PATH/test.$SRC-$TGT.$TGT
 
 unset PARA_SRC_VALID PARA_TGT_VALID PARA_SRC_TEST PARA_TGT_TEST
 if [ "$SRC" == "en" -a "$TGT" == "gu" ]; then
-  PARA_SRC_VALID=$PARA_PATH/dev/newsdev2019-engu-src.en.sgm
-  PARA_TGT_VALID=$PARA_PATH/dev/newsdev2019-engu-ref.gu.sgm
-  PARA_SRC_TEST=$PARA_PATH/dev/newstest2019-engu-src.en.sgm
-  PARA_TGT_TEST=$PARA_PATH/dev/newstest2019-engu-ref.gu.sgm
+  PARA_SRC_VALID=$PARA_PATH/dev/newsdev2019-engu-src.en
+  PARA_TGT_VALID=$PARA_PATH/dev/newsdev2019-engu-ref.gu
+  PARA_SRC_TEST=$PARA_PATH/dev/newstest2019-engu-src.en
+  PARA_TGT_TEST=$PARA_PATH/dev/newstest2019-engu-ref.gu
 fi
 if [ "$SRC" == "gu" -a "$TGT" == "en" ]; then
-  PARA_SRC_VALID=$PARA_PATH/dev/newsdev2019-guen-src.gu.sgm
-  PARA_TGT_VALID=$PARA_PATH/dev/newsdev2019-guen-ref.en.sgm
-  PARA_SRC_TEST=$PARA_PATH/dev/newstest2019-guen-src.gu.sgm
-  PARA_TGT_TEST=$PARA_PATH/dev/newstest2019-guen-ref.en.sgm
+  PARA_SRC_VALID=$PARA_PATH/dev/newsdev2019-guen-src.gu
+  PARA_TGT_VALID=$PARA_PATH/dev/newsdev2019-guen-ref.en
+  PARA_SRC_TEST=$PARA_PATH/dev/newstest2019-guen-src.gu
+  PARA_TGT_TEST=$PARA_PATH/dev/newstest2019-guen-ref.en
   # PARA_SRC_TEST=$PARA_PATH/dev/newstest2014-deen-ref.de
   # PARA_TGT_TEST=$PARA_PATH/dev/newstest2014-deen-ref.en
 fi
