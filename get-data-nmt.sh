@@ -176,6 +176,7 @@ if [ "$SRC" == "en" -o "$TGT" == "en" ]; then
   # wget -c http://data.statmt.org/news-crawl/en/news.2016.en.shuffled.deduped.gz
   # wget -c http://data.statmt.org/news-crawl/en/news.2017.en.shuffled.deduped.gz
   wget -c http://data.statmt.org/news-crawl/en/news.2018.en.shuffled.deduped.gz
+fi
 
 '''if [ "$SRC" == "de" -o "$TGT" == "de" ]; then
   echo "Downloading German monolingual data ..."
