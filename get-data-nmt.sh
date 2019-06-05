@@ -11,7 +11,7 @@ set -e
 #
 # Data preprocessing configuration
 #
-N_MONO=5000000  # number of monolingual sentences for each language
+N_MONO=520000  # number of monolingual sentences for each language, 24.4 +28.5
 CODES=60000     # number of BPE codes
 N_THREADS=16    # number of threads in data preprocessing
 
@@ -119,10 +119,32 @@ PARA_SRC_TEST_BPE=$PROC_PATH/test.$SRC-$TGT.$SRC
 PARA_TGT_TEST_BPE=$PROC_PATH/test.$SRC-$TGT.$TGT
 
 # valid / test file raw data
-unset PARA_SRC_VALID PARA_TGT_VALID PARA_SRC_TEST PARA_TGT_TEST
+'''unset PARA_SRC_VALID PARA_TGT_VALID PARA_SRC_TEST PARA_TGT_TEST
 if [ "$SRC" == "en" -a "$TGT" == "fr" ]; then
   PARA_SRC_VALID=$PARA_PATH/dev/newstest2013-ref.en
   PARA_TGT_VALID=$PARA_PATH/dev/newstest2013-ref.fr
+  PARA_SRC_TEST=$PARA_PATH/dev/newstest2014-fren-ref.en
+  PARA_TGT_TEST=$PARA_PATH/dev/newstest2014-fren-ref.fr
+fi
+if [ "$SRC" == "de" -a "$TGT" == "en" ]; then
+  PARA_SRC_VALID=$PARA_PATH/dev/newstest2013-ref.de
+  PARA_TGT_VALID=$PARA_PATH/dev/newstest2013-ref.en
+  PARA_SRC_TEST=$PARA_PATH/dev/newstest2016-ende-ref.de
+  PARA_TGT_TEST=$PARA_PATH/dev/newstest2016-deen-ref.en
+  # PARA_SRC_TEST=$PARA_PATH/dev/newstest2014-deen-ref.de
+  # PARA_TGT_TEST=$PARA_PATH/dev/newstest2014-deen-ref.en
+fi
+if [ "$SRC" == "en" -a "$TGT" == "ro" ]; then
+  PARA_SRC_VALID=$PARA_PATH/dev/newsdev2016-roen-ref.en
+  PARA_TGT_VALID=$PARA_PATH/dev/newsdev2016-enro-ref.ro
+  PARA_SRC_TEST=$PARA_PATH/dev/newstest2016-roen-ref.en
+  PARA_TGT_TEST=$PARA_PATH/dev/newstest2016-enro-ref.ro
+fi'''
+
+unset PARA_SRC_VALID PARA_TGT_VALID PARA_SRC_TEST PARA_TGT_TEST
+if [ "$SRC" == "en" -a "$TGT" == "gu" ]; then
+  PARA_SRC_VALID=$PARA_PATH/dev/newsdev2019-guen-ref.en
+  PARA_TGT_VALID=$PARA_PATH/dev/newsdev2019-engu-ref.gu
   PARA_SRC_TEST=$PARA_PATH/dev/newstest2014-fren-ref.en
   PARA_TGT_TEST=$PARA_PATH/dev/newstest2014-fren-ref.fr
 fi
