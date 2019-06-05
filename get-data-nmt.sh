@@ -63,8 +63,8 @@ if [ "$RELOAD_CODES" == "" -a "$RELOAD_VOCAB" != "" -o "$RELOAD_CODES" != "" -a 
 #
 
 # main paths
-MAIN_PATH= /home/s1852803/unmt/XLM
-# MAIN_PATH=$PWD
+# MAIN_PATH= /home/s1852803/unmt/XLM
+MAIN_PATH=$PWD
 TOOLS_PATH=$MAIN_PATH/tools
 DATA_PATH=$MAIN_PATH/data
 MONO_PATH=$DATA_PATH/mono
