@@ -46,8 +46,11 @@ set -- "${POSITIONAL[@]}"
 #
 if [ "$SRC" == "" ]; then echo "--src not provided"; exit; fi
 if [ "$TGT" == "" ]; then echo "--tgt not provided"; exit; fi
-if [ "$SRC" != "de" -a "$SRC" != "en" -a "$SRC" != "fr" -a "$SRC" != "ro" ]; then echo "unknown source language"; exit; fi
-if [ "$TGT" != "de" -a "$TGT" != "en" -a "$TGT" != "fr" -a "$TGT" != "ro" ]; then echo "unknown target language"; exit; fi
+# if [ "$SRC" != "de" -a "$SRC" != "en" -a "$SRC" != "fr" -a "$SRC" != "ro" ]; then echo "unknown source language"; exit; fi
+# if [ "$TGT" != "de" -a "$TGT" != "en" -a "$TGT" != "fr" -a "$TGT" != "ro" ]; then echo "unknown target language"; exit; fi
+if [ "$SRC" != "gu" -a "$SRC" != "en" ]; then echo "unknown source language"; exit; fi
+if [ "$TGT" != "gu" -a "$TGT" != "en" ]; then echo "unknown target language"; exit; fi
+
 if [ "$SRC" == "$TGT" ]; then echo "source and target cannot be identical"; exit; fi
 if [ "$SRC" \> "$TGT" ]; then echo "please ensure SRC < TGT"; exit; fi
 if [ "$RELOAD_CODES" != "" ] && [ ! -f "$RELOAD_CODES" ]; then echo "cannot locate BPE codes"; exit; fi
@@ -62,8 +65,8 @@ if [ "$RELOAD_CODES" == "" -a "$RELOAD_VOCAB" != "" -o "$RELOAD_CODES" != "" -a 
 # main paths
 MAIN_PATH= /home/s1852803/unmt/XLM
 # MAIN_PATH=$PWD
-TOOLS_PATH=$PWD/tools
-DATA_PATH=$PWD/data
+TOOLS_PATH=$MAIN_PATH/tools
+DATA_PATH=$MAIN_PATH/data
 MONO_PATH=$DATA_PATH/mono
 PARA_PATH=$DATA_PATH/para
 PROC_PATH=$DATA_PATH/processed/$SRC-$TGT
@@ -143,25 +146,20 @@ fi'''
 
 unset PARA_SRC_VALID PARA_TGT_VALID PARA_SRC_TEST PARA_TGT_TEST
 if [ "$SRC" == "en" -a "$TGT" == "gu" ]; then
-  PARA_SRC_VALID=$PARA_PATH/dev/newsdev2019-guen-ref.en
-  PARA_TGT_VALID=$PARA_PATH/dev/newsdev2019-engu-ref.gu
-  PARA_SRC_TEST=$PARA_PATH/dev/newstest2014-fren-ref.en
-  PARA_TGT_TEST=$PARA_PATH/dev/newstest2014-fren-ref.fr
+  PARA_SRC_VALID=$PARA_PATH/dev/newsdev2019-engu-src.en.sgm
+  PARA_TGT_VALID=$PARA_PATH/dev/newsdev2019-engu-ref.gu.sgm
+  PARA_SRC_TEST=$PARA_PATH/dev/newstest2019-engu-src.en.sgm
+  PARA_TGT_TEST=$PARA_PATH/dev/newstest2019-engu-ref.gu.sgm
 fi
-if [ "$SRC" == "de" -a "$TGT" == "en" ]; then
-  PARA_SRC_VALID=$PARA_PATH/dev/newstest2013-ref.de
-  PARA_TGT_VALID=$PARA_PATH/dev/newstest2013-ref.en
-  PARA_SRC_TEST=$PARA_PATH/dev/newstest2016-ende-ref.de
-  PARA_TGT_TEST=$PARA_PATH/dev/newstest2016-deen-ref.en
+if [ "$SRC" == "gu" -a "$TGT" == "en" ]; then
+  PARA_SRC_VALID=$PARA_PATH/dev/newsdev2019-guen-src.gu.sgm
+  PARA_TGT_VALID=$PARA_PATH/dev/newsdev2019-guen-ref.en.sgm
+  PARA_SRC_TEST=$PARA_PATH/dev/newstest2019-guen-src.gu.sgm
+  PARA_TGT_TEST=$PARA_PATH/dev/newstest2019-guen-ref.en.sgm
   # PARA_SRC_TEST=$PARA_PATH/dev/newstest2014-deen-ref.de
   # PARA_TGT_TEST=$PARA_PATH/dev/newstest2014-deen-ref.en
 fi
-if [ "$SRC" == "en" -a "$TGT" == "ro" ]; then
-  PARA_SRC_VALID=$PARA_PATH/dev/newsdev2016-roen-ref.en
-  PARA_TGT_VALID=$PARA_PATH/dev/newsdev2016-enro-ref.ro
-  PARA_SRC_TEST=$PARA_PATH/dev/newstest2016-roen-ref.en
-  PARA_TGT_TEST=$PARA_PATH/dev/newstest2016-enro-ref.ro
-fi
+
 
 # install tools
 ./install-tools.sh
