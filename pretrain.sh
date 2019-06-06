@@ -25,19 +25,17 @@ export PATH=${CUDA_HOME}/bin:${PATH}
 
 export PYTHON_PATH=$PATH
 
-
-
 python train.py
 
 ## main parameters
---exp_name test_guen_mlm                # experiment name
+--exp_name test_enfr_mlm                # experiment name
 --dump_path ./dumped/                   # where to store the experiment
 
 ## data location / training objective
---data_path ./data/processed/gu-en/     # data location
---lgs 'gu-en'                           # considered languages
+--data_path ./data/processed/en-fr/     # data location
+--lgs 'en-fr'                           # considered languages
 --clm_steps ''                          # CLM objective
---mlm_steps 'gu,en'                     # MLM objective
+--mlm_steps 'en,fr'                     # MLM objective
 
 ## transformer parameters
 --emb_dim 1024                          # embeddings / model dimension
