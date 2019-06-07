@@ -5,7 +5,7 @@
 #SBATCH -N 1	  # nodes requested
 #SBATCH -n 1	  # tasks requested
 #SBATCH --partition=LongJobs
-#SBATCH --gres=gpu:8
+#SBATCH --gres=gpu:4
 #SBATCH --mem=12000  # memory in Mb
 #SBATCH --time=0-80:00:00
 
@@ -28,9 +28,9 @@ export PYTHON_PATH=$PATH
 
 cd /home/s1852803/unmt/XLM
 
-devices=0,1,2,3,4,5,6,7
+devices=0,1,2,3
 
-$devices python train.py \
+CUDA_VISIBLE_DEVICES=$devices python3 /home/s1852803/unmt/XLM/train.py \
     --exp_name test_guen_mlm \
     --dump_path /home/s1852803/unmt/XLM/dumped/ \
     --data_path /home/s1852803/unmt/XLM/data/processed/gu-en/ \
