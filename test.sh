@@ -26,7 +26,4 @@ export PYTHON_PATH=$PATH
 
 source /home/${STUDENT_ID}/miniconda3/bin/activate mlp
 
-import torch
-
-print(torch.cuda.is_available())
-print(torch.cuda.get_device_name(0))
+python test.py
