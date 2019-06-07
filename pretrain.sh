@@ -30,7 +30,7 @@ cd /home/s1852803/unmt/XLM
 
 devices=0,1,2,3,4,5,6,7
 
-python train.py \
+$devices python train.py \
     --exp_name test_guen_mlm \
     --dump_path /home/s1852803/unmt/XLM/dumped/ \
     --data_path /home/s1852803/unmt/XLM/data/processed/gu-en/ \
