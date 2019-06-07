@@ -29,9 +29,6 @@ export PYTHON_PATH=$PATH
 source /home/${STUDENT_ID}/miniconda3/bin/activate mlp
 
 torch.cuda.is_available()
-
 torch.cuda.device_count()
-
 torch.cuda.get_device_name(0)
-
 torch.cuda.current_device()
