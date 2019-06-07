@@ -4,7 +4,7 @@
 
 #SBATCH -N 1	  # nodes requested
 #SBATCH -n 1	  # tasks requested
-#SBATCH --partition=LongJobs
+#SBATCH --partition=MSC
 #SBATCH --gres=gpu:8
 #SBATCH --mem=12000  # memory in Mb
 #SBATCH --time=0-80:00:00
@@ -42,8 +42,8 @@ $devices python train.py \
     --dropout 0.1 \
     --attention_dropout 0.1 \
     --gelu_activation true \
-    --batch_size 16 \
-    --bptt 128 \
+    --batch_size 32 \
+    --bptt 256 \
     --optimizer adam,lr=0.0001 \
     --epoch_size 200000 \
     --validation_metrics _valid_mlm_ppl \
