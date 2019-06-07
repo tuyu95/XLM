@@ -26,9 +26,9 @@ export PYTHON_PATH=$PATH
 
 source /home/${STUDENT_ID}/miniconda3/bin/activate mlp
 
-#devices=0,1,2,3
+devices=0,1,2,3
 
-CUDA_VISIBLE_DEVICES= python3 /home/s1852803/unmt/XLM/train.py \
+CUDA_VISIBLE_DEVICES=$devices python3 /home/s1852803/unmt/XLM/train.py \
     --exp_name test_guen_mlm \
     --dump_path /home/s1852803/unmt/XLM/dumped/ \
     --data_path /home/s1852803/unmt/XLM/data/processed/gu-en/ \
