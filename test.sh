@@ -1,11 +1,10 @@
-#!/usr/bin/env sh
-# Distributed under MIT license
+#!/bin/sh
 
 
 #SBATCH -N 1	  # nodes requested
 #SBATCH -n 1	  # tasks requested
 #SBATCH --partition=Standard
-#SBATCH --gres=gpu:4
+#SBATCH --gres=gpu:3
 #SBATCH --mem=12000  # memory in Mb
 #SBATCH --time=0-08:00:00
 
@@ -27,9 +26,5 @@ export PYTHON_PATH=$PATH
 
 source /home/${STUDENT_ID}/miniconda3/bin/activate mlp
 
-import torch
-
-torch.cuda.is_available()
-torch.cuda.device_count()
-torch.cuda.get_device_name(0)
-torch.cuda.current_device()
+print(torch.cuda.is_available())
+print(torch.cuda.get_device_name(0))
