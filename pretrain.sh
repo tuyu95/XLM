@@ -31,29 +31,22 @@ cd /home/s1852803/unmt/XLM
 devices=0,1,2,3
 
 python train.py \
-    --exp_name test_guen_mlm \               # experiment name
-    --dump_path /home/s1852803/unmt/XLM/dumped/   \                # where to store the experiment
-
-  ## data location / training objective
-    --data_path /home/s1852803/unmt/XLM/data/processed/gu-en/   \  # data location
-    --lgs 'gu-en'                  \         # considered languages
-    --clm_steps ''      \                    # CLM objective
-    --mlm_steps 'gu,en'        \             # MLM objective
-
-  ## transformer parameters
-    --emb_dim 1024         \                 # embeddings / model dimension
-    --n_layers 6           \                 # number of layers
-    --n_heads 8             \                # number of heads
-    --dropout 0.1            \               # dropout
-    --attention_dropout 0.1   \              # attention dropout
-    --gelu_activation true      \            # GELU instead of ReLU
-
-  ## optimization
-    --batch_size 32              \           # sequences per batch
-    --bptt 256                    \          # sequences length
-    --optimizer adam,lr=0.0001     \         # optimizer
-    --epoch_size 200000             \        # number of sentences per epoch
-    --validation_metrics _valid_mlm_ppl  \   # validation metric (when to save the best model)
-    --stopping_criterion _valid_mlm_ppl,10  \ # end experiment if stopping criterion does not improve
+    --exp_name test_guen_mlm \
+    --dump_path /home/s1852803/unmt/XLM/dumped/ \
+    --data_path /home/s1852803/unmt/XLM/data/processed/gu-en/ \
+    --lgs 'gu-en' \
+    --clm_steps '' \
+    --mlm_steps 'gu,en' \
+    --n_layers 6 \
+    --n_heads 8 \
+    --dropout 0.1 \
+    --attention_dropout 0.1 \
+    --gelu_activation true \
+    --batch_size 32 \
+    --bptt 256 \
+    --optimizer adam,lr=0.0001 \
+    --epoch_size 200000 \
+    --validation_metrics _valid_mlm_ppl \
+    --stopping_criterion _valid_mlm_ppl,10
 
 
