@@ -31,7 +31,6 @@ cd /home/s1852803/unmt/XLM
 devices=0,1,2,3
 
 python train.py \
-  ## main parameters
     --exp_name test_guen_mlm \               # experiment name
     --dump_path /home/s1852803/unmt/XLM/dumped/   \                # where to store the experiment
 
