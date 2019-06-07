@@ -33,10 +33,10 @@ devices=0,1,2,3
 python train.py \
   ## main parameters
     --exp_name test_guen_mlm \               # experiment name
-    --dump_path ./dumped/   \                # where to store the experiment
+    --dump_path /home/s1852803/unmt/XLM/dumped/   \                # where to store the experiment
 
   ## data location / training objective
-    --data_path ./data/processed/gu-en/   \  # data location
+    --data_path /home/s1852803/unmt/XLM/data/processed/gu-en/   \  # data location
     --lgs 'gu-en'                  \         # considered languages
     --clm_steps ''      \                    # CLM objective
     --mlm_steps 'gu,en'        \             # MLM objective
