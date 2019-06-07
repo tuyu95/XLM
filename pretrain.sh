@@ -40,8 +40,8 @@ CUDA_VISIBLE_DEVICES=$devices python3 /home/s1852803/unmt/XLM/train.py \
     --dropout 0.1 \
     --attention_dropout 0.1 \
     --gelu_activation true \
-    --batch_size 32 \
-    --bptt 256 \
+    --batch_size 16 \
+    --bptt 128 \
     --optimizer adam,lr=0.0001 \
     --epoch_size 200000 \
     --validation_metrics _valid_mlm_ppl \
