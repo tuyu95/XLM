@@ -1,5 +1,4 @@
 #!/usr/bin/env sh
-# Distributed under MIT license
 
 
 #SBATCH -N 1	  # nodes requested
@@ -25,8 +24,7 @@ export PATH=${CUDA_HOME}/bin:${PATH}
 
 export PYTHON_PATH=$PATH
 
-
-cd /home/s1852803/unmt/XLM
+source /home/${STUDENT_ID}/miniconda3/bin/activate mlp
 
 devices=0,1,2,3
 
