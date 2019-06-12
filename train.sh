@@ -42,7 +42,7 @@ CUDA_VISIBLE_DEVICES=$devices python3 /home/s1852803/unmt/XLM/train.py \
     --word_blank 0.1 \
     --lambda_ae '0:1,100000:0.1,300000:0' \
     --encoder_only false \
-    --emb_dim 1024 \
+    --emb_dim 512 \
     --n_layers 6 \
     --n_heads 8 \
     --dropout 0.1 \
