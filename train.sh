@@ -33,7 +33,8 @@ CUDA_VISIBLE_DEVICES=$devices
 
 python /home/s1852803/unmt/XLM/test.py
 
-python3 /home/s1852803/unmt/XLM/train.py \
+export NGPU=8;
+python -m torch.distributed.launch --nproc_per_node=$NGPU /home/s1852803/unmt/XLM/train.py \
     --exp_name unsupMT_guen \
     --dump_path /home/s1852803/unmt/XLM/dumped/ \
     --reload_model /home/s1852803/unmt/XLM/mlm_guen_ppl.pth,/home/s1852803/unmt/XLM/mlm_guen_ppl.pth \
