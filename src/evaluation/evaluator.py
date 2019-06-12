@@ -73,7 +73,7 @@ class Evaluator(object):
                 )
         else:
             assert stream is False
-            _lang1, _lang2 = (lang1, lang2) if lang1 < lang2 else (lang2, lang1)
+            _lang1, _lang2 = (lang1, lang2) if lang1 > lang2 else (lang2, lang1)
             iterator = self.data['para'][(_lang1, _lang2)][data_set].get_iterator(
                 shuffle=False,
                 group_by_size=True,
@@ -81,7 +81,7 @@ class Evaluator(object):
             )
 
         for batch in iterator:
-            yield batch if lang2 is None or lang1 < lang2 else batch[::-1]
+            yield batch if lang2 is None or lang1 > lang2 else batch[::-1]
 
     def create_reference_files(self):
         """
@@ -92,7 +92,7 @@ class Evaluator(object):
 
         for (lang1, lang2), v in self.data['para'].items():
 
-            assert lang1 < lang2
+            assert lang1 > lang2
 
             for data_set in ['valid', 'test']:
 
