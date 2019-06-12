@@ -29,7 +29,11 @@ devices=0,1,2,3,4,5,6,7
 
 cd /home/s1852803/unmt/XLM
 
-CUDA_VISIBLE_DEVICES=$devices python3 /home/s1852803/unmt/XLM/train.py \
+CUDA_VISIBLE_DEVICES=$devices 
+print(torch.cuda.get_device_name(0))
+print(torch.cuda.device_count())
+print(torch.cuda.current_device())
+python3 /home/s1852803/unmt/XLM/train.py \
     --exp_name unsupMT_guen \
     --dump_path /home/s1852803/unmt/XLM/dumped/ \
     --reload_model /home/s1852803/unmt/XLM/mlm_guen_ppl.pth,/home/s1852803/unmt/XLM/mlm_guen_ppl.pth \
@@ -49,7 +53,7 @@ CUDA_VISIBLE_DEVICES=$devices python3 /home/s1852803/unmt/XLM/train.py \
     --attention_dropout 0.1 \
     --gelu_activation true \
     --tokens_per_batch 2000 \
-    --batch_size 32 \
+    --batch_size 16 \
     --bptt 128 \
     --optimizer adam_inverse_sqrt,beta1=0.9,beta2=0.98,lr=0.0001 \
     --epoch_size 200000 \
