@@ -30,9 +30,9 @@ devices=0,1,2,3,4,5,6,7
 cd /home/s1852803/unmt/XLM
 
 CUDA_VISIBLE_DEVICES=$devices 
-print(torch.cuda.get_device_name(0))
-print(torch.cuda.device_count())
-print(torch.cuda.current_device())
+
+python /home/s1852803/unmt/XLM/test.py
+
 python3 /home/s1852803/unmt/XLM/train.py \
     --exp_name unsupMT_guen \
     --dump_path /home/s1852803/unmt/XLM/dumped/ \
