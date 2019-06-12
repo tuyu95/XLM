@@ -304,7 +304,7 @@ def check_data_params(params):
             for splt in ['train', 'valid', 'test']
             if splt != 'train' or (src, tgt) in required_para_train or (tgt, src) in required_para_train
         } for src in params.langs for tgt in params.langs
-        if src < tgt and ((src, tgt) in required_para or (tgt, src) in required_para)
+        if src > tgt and ((src, tgt) in required_para or (tgt, src) in required_para)
     }
     assert all([all([os.path.isfile(p1) and os.path.isfile(p2) for p1, p2 in paths.values()]) for paths in params.para_dataset.values()])
 
