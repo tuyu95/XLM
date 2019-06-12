@@ -27,6 +27,8 @@ source /home/${STUDENT_ID}/miniconda3/bin/activate mlp
 
 devices=0,1,2,3
 
+cd /home/s1852803/unmt/XLM
+
 CUDA_VISIBLE_DEVICES=$devices python3 /home/s1852803/unmt/XLM/train.py \
     --exp_name unsupMT_guen \
     --dump_path /home/s1852803/unmt/XLM/dumped \
