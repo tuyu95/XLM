@@ -52,5 +52,5 @@ CUDA_VISIBLE_DEVICES=$devices python3 /home/s1852803/unmt/XLM/train.py \
     --optimizer adam_inverse_sqrt,beta1=0.9,beta2=0.98,lr=0.0001  # optimizer
     --epoch_size 200000                                           # number of sentences per epoch
     --eval_bleu true                                              # also evaluate the BLEU score
-    --stopping_criterion 'valid_en-fr_mt_bleu,10'                 # validation metric (when to save the best model)
-    --validation_metrics 'valid_en-fr_mt_bleu'                    # end experiment if stopping criterion does not improve
+    --stopping_criterion 'valid_gu-en_mt_bleu,10'                 # validation metric (when to save the best model)
+    --validation_metrics 'valid_gu-en_mt_bleu'                    # end experiment if stopping criterion does not improve
