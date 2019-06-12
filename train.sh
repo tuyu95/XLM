@@ -29,9 +29,9 @@ devices=0,1,2,3
 
 CUDA_VISIBLE_DEVICES=$devices python3 /home/s1852803/unmt/XLM/train.py \
     --exp_name unsupMT_guen \
-    --dump_path ./dumped/ \
+    --dump_path /home/s1852803/unmt/XLM/dumped \
     --reload_model 'mlm_guen_ppl.pth, mlm_guen_ppl.pth' \
-    --data_path ./data/processed/gu-en/ \
+    --data_path /home/s1852803/unmt/XLM/data/processed/gu-en/ \
     --lgs 'gu-en' \
     --ae_steps 'gu,en' \
     --bt_steps 'gu-en-gu,en-gu-en' \
