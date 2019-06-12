@@ -30,7 +30,7 @@ devices=0,1,2,3
 CUDA_VISIBLE_DEVICES=$devices python3 /home/s1852803/unmt/XLM/train.py \
     --exp_name unsupMT_guen \
     --dump_path ./dumped/ \
-    --reload_model 'best-valid_mlm_ppl.pth,best-valid_mlm_ppl.pth' \
+    --reload_model 'mlm_guen_ppl.pth, mlm_guen_ppl.pth' \
     --data_path ./data/processed/gu-en/ \
     --lgs 'gu-en' \
     --ae_steps 'gu,en' \
@@ -52,5 +52,5 @@ CUDA_VISIBLE_DEVICES=$devices python3 /home/s1852803/unmt/XLM/train.py \
     --optimizer adam_inverse_sqrt,beta1=0.9,beta2=0.98,lr=0.0001 \
     --epoch_size 200000 \
     --eval_bleu true \
-    --stopping_criterion 'valid_gu-en_mt_bleu,10' \
-    --validation_metrics 'valid_gu-en_mt_bleu'
+    --stopping_criterion valid_gu-en_mt_bleu,10 \
+    --validation_metrics valid_gu-en_mt_bleu
