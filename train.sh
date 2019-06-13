@@ -29,7 +29,7 @@ devices=0,1,2,3
 
 cd /home/s1852803/unmt/XLM
 
-export CUDA_VISIBLE_DEVICES=$devices 
+CUDA_VISIBLE_DEVICES=$devices 
 python /home/s1852803/unmt/XLM/test.py
 
 export NGPU=4
