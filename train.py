@@ -10,7 +10,9 @@ import argparse
 import torch
 from torch import nn
 
-from src.slurm import init_signal_handler, init_distributed_mode
+# from src.slurm import init_signal_handler, init_distributed_mode
+#import slurm
+#from slurm import init_signal_handler, init_distributed_mode
 from src.data.loader import check_data_params, load_data
 from src.utils import bool_flag, initialize_exp, set_sampling_probs, shuf_order
 from src.model import check_model_params, build_model
@@ -201,13 +203,13 @@ def get_parser():
 def main(params):
 
     # initialize the multi-GPU / multi-node training
-    init_distributed_mode(params)
+    # init_distributed_mode(params)
 
     # initialize the experiment
     logger = initialize_exp(params)
 
     # initialize SLURM signal handler for time limit / pre-emption
-    init_signal_handler()
+    # init_signal_handler()
 
     # load data
     data = load_data(params)
