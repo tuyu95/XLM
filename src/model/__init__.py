@@ -145,7 +145,7 @@ def build_model(params, dico):
                 enc_reload = enc_reload['model' if 'model' in enc_reload else 'encoder']
                 if all([k.startswith('module.') for k in enc_reload.keys()]):
                     enc_reload = {k[len('module.'):]: v for k, v in enc_reload.items()}
-                encoder.load_state_dict(enc_reload, strict=False)
+                encoder.load_state_dict(enc_reload)
 
             # reload decoder
             if dec_path != '':
