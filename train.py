@@ -243,7 +243,7 @@ def main(params):
             if params.encoder_only:
                 model = nn.parallel.DistributedDataParallel(model, device_ids=[params.local_rank], output_device=params.local_rank, broadcast_buffers=True)
             else:
-                encoder = nn.parallel.DistributedDataParallel(encoder, device_ids=[params.local_rank], output_device=params.local_rank, broadcast_buffers=True)
+                encoder = nn.parallel.DistributedDataParallel(encoder, device_ids=[params.local_rank], output_device=params.local_rank, broadcast_buffers=True, find_unused_parameters=True)
                 decoder = nn.parallel.DistributedDataParallel(decoder, device_ids=[params.local_rank], output_device=params.local_rank, broadcast_buffers=True)
 
     # build trainer, reload potential checkpoints / build evaluator
