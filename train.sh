@@ -25,14 +25,16 @@ export PYTHON_PATH=$PATH
 
 source /home/${STUDENT_ID}/miniconda3/bin/activate mlp
 
-devices=0,1,2,3,4,5,6,7
+# devices=0,1,2,3,4,5,6,7
 
 cd /home/s1852803/unmt/XLM
+torch.cuda.set_device(8)
+# CUDA_VISIBLE_DEVICES=$devices 
+python /home/s1852803/unmt/XLM/test.py
 
-CUDA_VISIBLE_DEVICES=$devices python /home/s1852803/unmt/XLM/test.py
+# export NGPU=8;
 
-#export NGPU=8;
-CUDA_VISIBLE_DEVICES=$devices python3 /home/s1852803/unmt/XLM/train.py \
+python3 /home/s1852803/unmt/XLM/train.py \
     --exp_name unsupMT_guen \
     --dump_path /home/s1852803/unmt/XLM/dumped/ \
     --reload_model /home/s1852803/unmt/XLM/mlm_guen_ppl.pth,/home/s1852803/unmt/XLM/mlm_guen_ppl.pth \
