@@ -25,17 +25,17 @@ export PYTHON_PATH=$PATH
 
 source /home/${STUDENT_ID}/miniconda3/bin/activate mlp
 
-# devices=0,1,2,3,4,5,6,7
+devices=0,1,2,3,4,5,6,7
 
 cd /home/s1852803/unmt/XLM
 
-# CUDA_VISIBLE_DEVICES=$devices 
+CUDA_VISIBLE_DEVICES=$devices 
 
 python /home/s1852803/unmt/XLM/test.py
 
 export NGPU=8;
 python -m torch.distributed.launch --nproc_per_node=$NGPU /home/s1852803/unmt/XLM/train.py \
-    --debug_slurm True \
+    --debug_slurm true \
     --exp_name unsupMT_guen \
     --dump_path /home/s1852803/unmt/XLM/dumped/ \
     --reload_model /home/s1852803/unmt/XLM/mlm_guen_ppl.pth,/home/s1852803/unmt/XLM/mlm_guen_ppl.pth \
