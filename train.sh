@@ -25,11 +25,11 @@ export PYTHON_PATH=$PATH
 
 source /home/${STUDENT_ID}/miniconda3/bin/activate mlp
 
-devices=0,1,2,3,4,5,6,7
+# devices=0,1,2,3,4,5,6,7
 
 cd /home/s1852803/unmt/XLM
 
-export CUDA_VISIBLE_DEVICES=$devices 
+# export CUDA_VISIBLE_DEVICES=$devices 
 python /home/s1852803/unmt/XLM/test.py
 
 export NGPU=8
