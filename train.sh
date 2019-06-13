@@ -25,11 +25,11 @@ export PYTHON_PATH=$PATH
 
 source /home/${STUDENT_ID}/miniconda3/bin/activate mlp
 
-devices=0,1,2,3,4,5,6,7
+# devices=0,1,2,3,4,5,6,7
 
 cd /home/s1852803/unmt/XLM
 
-CUDA_VISIBLE_DEVICES=$devices 
+# CUDA_VISIBLE_DEVICES=$devices 
 python /home/s1852803/unmt/XLM/test.py
 
 export NGPU=8;
@@ -59,7 +59,5 @@ python -m torch.distributed.launch --nproc_per_node=$NGPU /home/s1852803/unmt/XL
     --optimizer adam_inverse_sqrt,beta1=0.9,beta2=0.98,lr=0.0001 \
     --epoch_size 200000 \
     --eval_bleu true \
-    --local_rank -1 \
-    --multi_gpu true\
     --stopping_criterion valid_gu-en_mt_bleu,10 \
     --validation_metrics valid_gu-en_mt_bleu
