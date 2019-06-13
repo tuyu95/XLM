@@ -60,5 +60,6 @@ python -m torch.distributed.launch --nproc_per_node=$NGPU /home/s1852803/unmt/XL
     --epoch_size 200000 \
     --eval_bleu true \
     --local_rank -1 \
+    --multi_gpu true\
     --stopping_criterion valid_gu-en_mt_bleu,10 \
     --validation_metrics valid_gu-en_mt_bleu
