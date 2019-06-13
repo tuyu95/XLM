@@ -10,9 +10,9 @@ import argparse
 import torch
 from torch import nn
 
-# from src.slurm import init_signal_handler, init_distributed_mode
-import slurm
-from slurm import init_signal_handler, init_distributed_mode
+from src.slurm import init_signal_handler, init_distributed_mode
+# import slurm
+# from slurm import init_signal_handler, init_distributed_mode
 
 from src.data.loader import check_data_params, load_data
 from src.utils import bool_flag, initialize_exp, set_sampling_probs, shuf_order
