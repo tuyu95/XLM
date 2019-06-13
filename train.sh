@@ -29,8 +29,7 @@ source /home/${STUDENT_ID}/miniconda3/bin/activate mlp
 
 cd /home/s1852803/unmt/XLM
 
-# CUDA_VISIBLE_DEVICES=$devices 
-# python /home/s1852803/unmt/XLM/test.py
+
 
 export NGPU=4
 python -m torch.distributed.launch --nproc_per_node=$NGPU /home/s1852803/unmt/XLM/train.py \
