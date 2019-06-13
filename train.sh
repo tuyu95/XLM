@@ -58,6 +58,5 @@ python -m torch.distributed.launch --nproc_per_node=$NGPU /home/s1852803/unmt/XL
     --optimizer adam_inverse_sqrt,beta1=0.9,beta2=0.98,lr=0.0001 \
     --epoch_size 200000 \
     --eval_bleu true \
-    --local_rank 8 \
     --stopping_criterion valid_gu-en_mt_bleu,10 \
     --validation_metrics valid_gu-en_mt_bleu
