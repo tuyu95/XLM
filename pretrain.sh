@@ -5,7 +5,7 @@
 #SBATCH -n 1	  # tasks requested
 #SBATCH --partition=MSC
 #SBATCH --gres=gpu:8
-#SBATCH --mem=12000  # memory in Mb
+#SBATCH --mem=24000  # memory in Mb
 #SBATCH --time=0-80:00:00
 
 export CUDA_HOME=/opt/cuda-9.0.176.1/
