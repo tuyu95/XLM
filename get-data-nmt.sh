@@ -52,7 +52,7 @@ if [ "$SRC" != "gu" -a "$SRC" != "en" ]; then echo "unknown source language"; ex
 if [ "$TGT" != "gu" -a "$TGT" != "en" ]; then echo "unknown target language"; exit; fi
 
 if [ "$SRC" == "$TGT" ]; then echo "source and target cannot be identical"; exit; fi
-# if [ "$SRC" \> "$TGT" ]; then echo "please ensure SRC < TGT"; exit; fi
+if [ "$SRC" \> "$TGT" ]; then echo "please ensure SRC < TGT"; exit; fi
 if [ "$RELOAD_CODES" != "" ] && [ ! -f "$RELOAD_CODES" ]; then echo "cannot locate BPE codes"; exit; fi
 if [ "$RELOAD_VOCAB" != "" ] && [ ! -f "$RELOAD_VOCAB" ]; then echo "cannot locate vocabulary"; exit; fi
 if [ "$RELOAD_CODES" == "" -a "$RELOAD_VOCAB" != "" -o "$RELOAD_CODES" != "" -a "$RELOAD_VOCAB" == "" ]; then echo "BPE codes should be provided if and only if vocabulary is also provided"; exit; fi
