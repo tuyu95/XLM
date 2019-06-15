@@ -11,7 +11,7 @@ set -e
 #
 # Data preprocessing configuration
 #
-N_MONO=520000  # number of monolingual sentences for each language, 24.4 +28.5
+N_MONO=4500000  # number of monolingual sentences for each language, 24.4 +28.5
 CODES=60000     # number of BPE codes
 N_THREADS=16    # number of threads in data preprocessing
 
@@ -158,6 +158,7 @@ if [ "$SRC" == "gu" -o "$TGT" == "gu" ]; then
   wget -c http://data.statmt.org/news-crawl/gu/news.2018.gu.shuffled.deduped.gz
   wget -c http://data.statmt.org/news-crawl/gu/news.2019.M1-M4.gu.shuffled.deduped.gz
   # wget -c http://data.statmt.org/wmt19/translation-task/wiki/wiki.2018.gu.filtered.gz
+  # wget -c http://web-language-models.s3-website-us-east-1.amazonaws.com/ngrams/gu/deduped/gu.deduped.xz
 fi
 
 if [ "$SRC" == "en" -o "$TGT" == "en" ]; then
@@ -174,7 +175,7 @@ if [ "$SRC" == "en" -o "$TGT" == "en" ]; then
   # wget -c http://data.statmt.org/news-crawl/en/news.2014.en.shuffled.deduped.gz
   # wget -c http://data.statmt.org/news-crawl/en/news.2015.en.shuffled.deduped.gz
   # wget -c http://data.statmt.org/news-crawl/en/news.2016.en.shuffled.deduped.gz
-  # wget -c http://data.statmt.org/news-crawl/en/news.2017.en.shuffled.deduped.gz
+  wget -c http://data.statmt.org/news-crawl/en/news.2017.en.shuffled.deduped.gz
   wget -c http://data.statmt.org/news-crawl/en/news.2018.en.shuffled.deduped.gz
 fi
 
