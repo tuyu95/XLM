@@ -35,9 +35,9 @@ CUDA_VISIBLE_DEVICES=$devices python3 /home/s1852803/unmt/XLM/train.py \
     --dump_path /home/s1852803/unmt/XLM/dumped/ \
     --reload_model /home/s1852803/unmt/XLM/mlm_guen_ppl.pth,/home/s1852803/unmt/XLM/mlm_guen_ppl.pth \
     --data_path /home/s1852803/unmt/XLM/data/processed_1/en-gu/ \
-    --lgs 'gu-en' \
-    --ae_steps 'gu,en' \
-    --bt_steps 'gu-en-gu,en-gu-en' \
+    --lgs 'en-gu' \
+    --ae_steps 'en,gu' \
+    --bt_steps 'en-gu-en,gu-en-gu' \
     --word_shuffle 3 \
     --word_dropout 0.1 \
     --word_blank 0.1 \
