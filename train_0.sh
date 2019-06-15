@@ -1,4 +1,3 @@
-
 #!/bin/sh
 
 #SBATCH -N 1	  # nodes requested
