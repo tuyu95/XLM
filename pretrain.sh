@@ -3,7 +3,7 @@
 
 #SBATCH -N 1	  # nodes requested
 #SBATCH -n 1	  # tasks requested
-#SBATCH --partition=Standard
+#SBATCH --partition=General_Usage 
 #SBATCH --gres=gpu:8
 #SBATCH --mem=24000  # memory in Mb
 #SBATCH --time=0-08:00:00
