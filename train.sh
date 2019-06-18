@@ -3,7 +3,7 @@
 #SBATCH -N 1	  # nodes requested
 #SBATCH -n 1	  # tasks requested
 #SBATCH --partition=General_Usage
-#SBATCH --gres=gpu:8
+#SBATCH --gres=gpu:4
 #SBATCH --mem=12000  # memory in Mb
 #SBATCH --time=0-80:00:00
 
@@ -50,7 +50,7 @@ CUDA_VISIBLE_DEVICES=$devices python3 /home/s1852803/unmt/XLM/train.py \
     --attention_dropout 0.1 \
     --gelu_activation true \
     --tokens_per_batch 1000 \
-    --batch_size 32 \
+    --batch_size 16 \
     --bptt 128 \
     --optimizer adam_inverse_sqrt,beta1=0.9,beta2=0.98,lr=0.0001 \
     --epoch_size 200000 \
