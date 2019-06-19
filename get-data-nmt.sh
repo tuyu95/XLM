@@ -48,8 +48,8 @@ if [ "$SRC" == "" ]; then echo "--src not provided"; exit; fi
 if [ "$TGT" == "" ]; then echo "--tgt not provided"; exit; fi
 # if [ "$SRC" != "de" -a "$SRC" != "en" -a "$SRC" != "fr" -a "$SRC" != "ro" ]; then echo "unknown source language"; exit; fi
 # if [ "$TGT" != "de" -a "$TGT" != "en" -a "$TGT" != "fr" -a "$TGT" != "ro" ]; then echo "unknown target language"; exit; fi
-if [ "$SRC" != "gu" -a "$SRC" != "en" ]; then echo "unknown source language"; exit; fi
-if [ "$TGT" != "gu" -a "$TGT" != "en" ]; then echo "unknown target language"; exit; fi
+# if [ "$SRC" != "gu" -a "$SRC" != "en" ]; then echo "unknown source language"; exit; fi
+# if [ "$TGT" != "gu" -a "$TGT" != "en" ]; then echo "unknown target language"; exit; fi
 
 if [ "$SRC" == "$TGT" ]; then echo "source and target cannot be identical"; exit; fi
 if [ "$SRC" \> "$TGT" ]; then echo "please ensure SRC < TGT"; exit; fi
