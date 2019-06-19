@@ -140,6 +140,13 @@ if [ "$SRC" == "gu" -a "$TGT" == "en" ]; then
   # PARA_TGT_TEST=$PARA_PATH/dev/newstest2014-deen-ref.en
 fi
 
+if [ "$SRC" == "en" -a "$TGT" == "fr" ]; then
+  PARA_SRC_VALID=$PARA_PATH/dev/newstest2013-ref.en
+  PARA_TGT_VALID=$PARA_PATH/dev/newstest2013-ref.fr
+  PARA_SRC_TEST=$PARA_PATH/dev/newstest2014-fren-ref.en
+  PARA_TGT_TEST=$PARA_PATH/dev/newstest2014-fren-ref.fr
+fi
+
 
 # install tools
 ./install-tools.sh
@@ -177,6 +184,23 @@ if [ "$SRC" == "en" -o "$TGT" == "en" ]; then
   # wget -c http://data.statmt.org/news-crawl/en/news.2016.en.shuffled.deduped.gz
   wget -c http://data.statmt.org/news-crawl/en/news.2017.en.shuffled.deduped.gz
   wget -c http://data.statmt.org/news-crawl/en/news.2018.en.shuffled.deduped.gz
+fi
+
+if [ "$SRC" == "fr" -o "$TGT" == "fr" ]; then
+  echo "Downloading French monolingual data ..."
+  mkdir -p $MONO_PATH/fr
+  cd $MONO_PATH/fr
+  wget -c http://www.statmt.org/wmt14/training-monolingual-news-crawl/news.2007.fr.shuffled.gz
+  wget -c http://www.statmt.org/wmt14/training-monolingual-news-crawl/news.2008.fr.shuffled.gz
+  wget -c http://www.statmt.org/wmt14/training-monolingual-news-crawl/news.2009.fr.shuffled.gz
+  # wget -c http://www.statmt.org/wmt14/training-monolingual-news-crawl/news.2010.fr.shuffled.gz
+  # wget -c http://www.statmt.org/wmt14/training-monolingual-news-crawl/news.2011.fr.shuffled.gz
+  # wget -c http://www.statmt.org/wmt14/training-monolingual-news-crawl/news.2012.fr.shuffled.gz
+  # wget -c http://www.statmt.org/wmt14/training-monolingual-news-crawl/news.2013.fr.shuffled.gz
+  # wget -c http://www.statmt.org/wmt15/training-monolingual-news-crawl-v2/news.2014.fr.shuffled.v2.gz
+  # wget -c http://data.statmt.org/wmt17/translation-task/news.2015.fr.shuffled.gz
+  # wget -c http://data.statmt.org/wmt17/translation-task/news.2016.fr.shuffled.gz
+  # wget -c http://data.statmt.org/wmt17/translation-task/news.2017.fr.shuffled.gz
 fi
 
 
