@@ -31,13 +31,13 @@ devices=0,1,2,3,4,5,6,7
 
 #export NGPU=8; python -m torch.distributed.launch --nproc_per_node=$NGPU /home/s1852803/unmt/XLM/train.py \
 CUDA_VISIBLE_DEVICES=$devices python3 /home/s1852803/unmt/XLM/train.py \
-    --exp_name unsupMT_guen \
+    --exp_name unsupMT_enfr \
     --dump_path /home/s1852803/unmt/XLM/dumped/ \
-    --reload_model /home/s1852803/unmt/XLM/mlm_guen_ppl.pth,/home/s1852803/unmt/XLM/mlm_guen_ppl.pth \
-    --data_path /home/s1852803/unmt/XLM/data/processed_1/en-gu/ \
-    --lgs 'en-gu' \
-    --ae_steps 'en,gu' \
-    --bt_steps 'en-gu-en,gu-en-gu' \
+    --reload_model /home/s1852803/unmt/XLM/mlm_enfr_ppl.pth,/home/s1852803/unmt/XLM/mlm_enfr_ppl.pth \
+    --data_path /home/s1852803/unmt/XLM/data/processed_1/en-fr/ \
+    --lgs 'en-fr' \
+    --ae_steps 'en,fr' \
+    --bt_steps 'en-fr-en,fr-en-fr' \
     --word_shuffle 3 \
     --word_dropout 0.1 \
     --word_blank 0.1 \
@@ -55,5 +55,5 @@ CUDA_VISIBLE_DEVICES=$devices python3 /home/s1852803/unmt/XLM/train.py \
     --optimizer adam_inverse_sqrt,beta1=0.9,beta2=0.98,lr=0.0001 \
     --epoch_size 200000 \
     --eval_bleu true \
-    --stopping_criterion valid_gu-en_mt_bleu,10 \
-    --validation_metrics valid_gu-en_mt_bleu
+    --stopping_criterion valid_en-fr_mt_bleu,10 \
+    --validation_metrics valid_en-fr_mt_bleu
