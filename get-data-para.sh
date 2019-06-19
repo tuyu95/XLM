@@ -177,6 +177,13 @@ if [ $pair == "en-zh" ]; then
   unzip -u $PARA_PATH/download.php?f=MultiUN%2Fen-zh.txt.zip -d $PARA_PATH
 fi
 
+# en-gu
+if [ $pair == "en-hi" ]; then
+  echo "Download parallel data for EN-GU"
+  # IIT Bombay English-Hindi Parallel Corpus
+  wget -c http://data.statmt.org/wmt19/translation-task/bible.gu-en.tsv.gz -P $PARA_PATH
+  # tar -xvf $PARA_PATH/parallel.tgz -d $PARA_PATH
+fi
 
 #
 # Tokenize and preprocess data
@@ -195,8 +202,8 @@ split_data() {
         seed="$1"; openssl enc -aes-256-ctr -pass pass:"$seed" -nosalt </dev/zero 2>/dev/null
     };
     NLINES=`wc -l $1  | awk -F " " '{print $1}'`;
-    NTRAIN=$((NLINES - 10000));
-    NVAL=$((NTRAIN + 5000));
+    NTRAIN=$((NLINES - 1000));
+    NVAL=$((NTRAIN + 500));
     shuf --random-source=<(get_seeded_random 42) $1 | head -$NTRAIN             > $2;
     shuf --random-source=<(get_seeded_random 42) $1 | head -$NVAL | tail -5000  > $3;
     shuf --random-source=<(get_seeded_random 42) $1 | tail -5000                > $4;
