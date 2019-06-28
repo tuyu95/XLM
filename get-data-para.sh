@@ -242,6 +242,9 @@ split_data() {
     NLINES=`wc -l $1  | awk -F " " '{print $1}'`;
     NTRAIN=$((NLINES - 1000));
     NVAL=$((NTRAIN + 500));
+    echo $NLINES
+    echo $NTRAIN
+    echo $NVAL
     shuf --random-source=<(get_seeded_random 42) $1 | head -$NTRAIN             > $2;
     shuf --random-source=<(get_seeded_random 42) $1 | head -$NVAL | tail -5000  > $3;
     shuf --random-source=<(get_seeded_random 42) $1 | tail -5000                > $4;
