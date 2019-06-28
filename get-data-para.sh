@@ -213,8 +213,9 @@ for lg in $(echo $pair | sed -e 's/\-/ /g'); do
 done
 
 # Get BPE codes and vocab
-wget -c https://dl.fbaipublicfiles.com/XLM/codes_xnli_15 -P $MAIN_PATH
-wget -c https://dl.fbaipublicfiles.com/XLM/vocab_xnli_15 -P $MAIN_PATH
+# wget -c https://dl.fbaipublicfiles.com/XLM/codes_xnli_15 -P $MAIN_PATH
+# wget -c https://dl.fbaipublicfiles.com/XLM/vocab_xnli_15 -P $MAIN_PATH
+
 
 # apply BPE codes and binarize the parallel corpora
 for lg in $(echo $pair | sed -e 's/\-/ /g'); do
