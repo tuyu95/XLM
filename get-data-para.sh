@@ -67,8 +67,8 @@ then
 fi
 
 if [ $pair == "en-gu" ]; then
-  cat $PARA_PATH/bi.gu-en.gu $PARA_PATH/govin-clean.gu-en.gu $PARA_PATH/wikipedia.gu-en.gu $PARA_PATH/opus.gu-en.gu > $PARA_PATH/en-gu.gu
-  cat $PARA_PATH/bi.gu-en.en $PARA_PATH/govin-clean.gu-en.en $PARA_PATH/wikipedia.gu-en.en $PARA_PATH/opus.gu-en.en > $PARA_PATH/en-gu.en
+  cat $PARA_PATH/bi.gu-en.gu $PARA_PATH/govin-clean.gu-en.gu $PARA_PATH/wikipedia.gu-en.gu $PARA_PATH/opus.gu-en.gu > $PARA_PATH/comb.en-gu.gu
+  cat $PARA_PATH/bi.gu-en.en $PARA_PATH/govin-clean.gu-en.en $PARA_PATH/wikipedia.gu-en.en $PARA_PATH/opus.gu-en.en > $PARA_PATH/comb.en-gu.en
 fi
 
 
