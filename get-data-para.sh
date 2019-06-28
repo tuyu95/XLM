@@ -13,8 +13,8 @@ pair=$1  # input language pair
 MAIN_PATH=$PWD
 PARA_PATH=$PWD/data/para
 PROCESSED_PATH=$PWD/data/processed/XLM15
-CODES_PATH=$MAIN_PATH/codes_xnli_15
-VOCAB_PATH=$MAIN_PATH/vocab_xnli_15
+CODES_PATH=$MAIN_PATH/guen.bpe
+VOCAB_PATH=$MAIN_PATH/vocab.guen
 
 # tools paths
 TOOLS_PATH=$PWD/tools
@@ -33,6 +33,44 @@ mkdir -p $PROCESSED_PATH
 #
 # Download and uncompress data
 #
+# en-gu
+if [ ! -f $PARA_PATH/bible.gu-en.tsv.gz ];
+then
+  wget http://data.statmt.org/wmt19/translation-task/bible.gu-en.tsv.gz -O $PARA_PATH/gu-en.tsv.gz
+  gzip -d $PARA_PATH/gu-en.tsv.gz
+  awk -F$'\t' '{print $1}' $PARA_PATH/gu-en.tsv > PARA_PATH/bi.gu-en.gu
+  awk -F$'\t' '{print $2}' $PARA_PATH/gu-en.tsv > PARA_PATH/bi.gu-en.en
+fi
+
+if [ ! -f $PARA_PATH/govin-clean.gu-en.tsv.gz ];
+then
+  wget http://data.statmt.org/wmt19/translation-task/govin-clean.gu-en.tsv.gz -O $PARA_PATH/govin-clean.gu-en.tsv.gz
+  gzip -d $PARA_PATH/govin-clean.gu-en.tsv.gz
+  awk -F$'\t' '{print $1}' $PARA_PATH/govin-clean.gu-en.tsv > $PARA_PATH/govin-clean.gu-en.gu
+  awk -F$'\t' '{print $2}' $PARA_PATH/govin-clean.gu-en.tsv > $PARA_PATH/govin-clean.gu-en.en
+fi
+
+if [ ! -f $PARA_PATH.gu-en.tsv.gz ];
+then
+  wget http://data.statmt.org/wmt19/translation-task/wikipedia.gu-en.tsv.gz -O $PARA_PATH/wikipedia.gu-en.tsv.gz
+  gzip -d $PARA_PATH/wikipedia.gu-en.tsv.gz
+  awk -F$'\t' '{print $1}' $PARA_PATH/wikipedia.gu-en.tsv > $PARA_PATH/wikipedia.gu-en.gu
+  awk -F$'\t' '{print $2}' $PARA_PATH/wikipedia.gu-en.tsv > $PARA_PATH/wikipedia.gu-en.en
+fi
+
+if [ ! -f $PARA_PATH/opus.gu-en.tsv.gz ];
+then
+  wget http://data.statmt.org/wmt19/translation-task/opus.gu-en.tsv.gz -O $PARA_PATH/opus.gu-en.tsv.gz
+  gzip -d $PARA_PATH/opus.gu-en.tsv.gz
+  awk -F$'\t' '{print $1}' $PARA_PATH/opus.gu-en.tsv > $PARA_PATH/opus.gu-en.gu
+  awk -F$'\t' '{print $2}' $PARA_PATH/opus.gu-en.tsv > $PARA_PATH/opus.gu-en.en
+fi
+
+if [ $pair == "en-gu" ]; then
+  cat $PARA_PATH/bi.gu-en.gu $PARA_PATH/govin-clean.gu-en.gu $PARA_PATH/wikipedia.gu-en.gu $PARA_PATH/opus.gu-en.gu > $PARA_PATH/en-gu.gu
+  cat $PARA_PATH/bi.gu-en.en $PARA_PATH/govin-clean.gu-en.en $PARA_PATH/wikipedia.gu-en.en $PARA_PATH/opus.gu-en.en > $PARA_PATH/en-gu.en
+fi
+
 
 # ar-en
 if [ $pair == "ar-en" ]; then
@@ -215,7 +253,6 @@ done
 # Get BPE codes and vocab
 # wget -c https://dl.fbaipublicfiles.com/XLM/codes_xnli_15 -P $MAIN_PATH
 # wget -c https://dl.fbaipublicfiles.com/XLM/vocab_xnli_15 -P $MAIN_PATH
-
 
 # apply BPE codes and binarize the parallel corpora
 for lg in $(echo $pair | sed -e 's/\-/ /g'); do
