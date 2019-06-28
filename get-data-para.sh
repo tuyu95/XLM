@@ -36,10 +36,10 @@ mkdir -p $PROCESSED_PATH
 # en-gu
 if [ ! -f $PARA_PATH/bible.gu-en.tsv.gz ];
 then
-  wget http://data.statmt.org/wmt19/translation-task/bible.gu-en.tsv.gz -O $PARA_PATH/gu-en.tsv.gz
-  gzip -d $PARA_PATH/gu-en.tsv.gz
-  awk -F$'\t' '{print $1}' $PARA_PATH/gu-en.tsv > PARA_PATH/bi.gu-en.gu
-  awk -F$'\t' '{print $2}' $PARA_PATH/gu-en.tsv > PARA_PATH/bi.gu-en.en
+  wget http://data.statmt.org/wmt19/translation-task/bible.gu-en.tsv.gz -O $PARA_PATH/bible.gu-en.tsv.gz
+  gzip -d $PARA_PATH/bible.gu-en.tsv.gz
+  awk -F$'\t' '{print $1}' $PARA_PATH/bible.gu-en.tsv > $PARA_PATH/bi.gu-en.gu
+  awk -F$'\t' '{print $2}' $PARA_PATH/bible.gu-en.tsv > $PARA_PATH/bi.gu-en.en
 fi
 
 if [ ! -f $PARA_PATH/govin-clean.gu-en.tsv.gz ];
