@@ -248,9 +248,11 @@ split_data() {
     shuf --random-source=<(get_seeded_random 42) $1 | head -$NTRAIN             > $2;
     shuf --random-source=<(get_seeded_random 42) $1 | head -$NVAL | tail -5000  > $3;
     shuf --random-source=<(get_seeded_random 42) $1 | tail -5000                > $4;
+    echo "shuf done"
 }
 for lg in $(echo $pair | sed -e 's/\-/ /g'); do
   split_data $PARA_PATH/$pair.$lg.all $PARA_PATH/$pair.$lg.train $PARA_PATH/$pair.$lg.valid $PARA_PATH/$pair.$lg.test
+  echo "split data"
 done
 
 # Get BPE codes and vocab
