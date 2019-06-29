@@ -33,7 +33,7 @@ devices=0,1
 CUDA_VISIBLE_DEVICES=$devices python3 /home/s1852803/unmt/XLM/train.py \
     --exp_name unsupMT_enfr \
     --dump_path /home/s1852803/unmt/XLM/dumped/ \
-    --reload_model /home/s1852803/unmt/XLM/mlm_enfr_ppl.pth,/home/s1852803/unmt/XLM/mlm_enfr_ppl.pth \
+    --reload_model /home/s1852803/unmt/XLM/best-valid_mlm_ppl.pth,/home/s1852803/unmt/XLM/best-valid_mlm_ppl.pth \
     --data_path /home/s1852803/unmt/XLM/data/processed/en-fr/ \
     --lgs 'en-fr' \
     --ae_steps 'en,fr' \
