@@ -52,7 +52,7 @@ then
   awk -F$'\t' '{print $2}' $PARA_PATH/govin-clean.gu-en.tsv > $PARA_PATH/govin-clean.gu-en.en
 fi
 
-if [ ! -f $PARA_PATH.wikipedia.gu-en.tsv ];
+if [ ! -f $PARA_PATH/wikipedia.gu-en.tsv ];
 then
   wget http://data.statmt.org/wmt19/translation-task/wikipedia.gu-en.tsv.gz -O $PARA_PATH/wikipedia.gu-en.tsv.gz
   gzip -d $PARA_PATH/wikipedia.gu-en.tsv.gz
