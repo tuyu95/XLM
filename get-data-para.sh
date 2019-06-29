@@ -13,8 +13,10 @@ pair=$1  # input language pair
 MAIN_PATH=$PWD
 PARA_PATH=$PWD/data/para
 PROCESSED_PATH=$PWD/data/processed/XLM15
-CODES_PATH=$MAIN_PATH/guen.bpe
-VOCAB_PATH=$MAIN_PATH/vocab.guen
+# CODES_PATH=$MAIN_PATH/guen.bpe
+# VOCAB_PATH=$MAIN_PATH/vocab.guen
+CODES_PATH=$MAIN_PATH/codes_xnli_15
+VOCAB_PATH=$MAIN_PATH/vocab_xnli_15
 
 # tools paths
 TOOLS_PATH=$PWD/tools
