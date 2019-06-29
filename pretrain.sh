@@ -3,10 +3,10 @@
 
 #SBATCH -N 1	  # nodes requested
 #SBATCH -n 1	  # tasks requested
-#SBATCH --partition=General_Usage 
+#SBATCH --partition=Standard 
 #SBATCH --gres=gpu:4
 #SBATCH --mem=12000  # memory in Mb
-#SBATCH --time=0-80:00:00
+#SBATCH --time=0-08:00:00
 
 export CUDA_HOME=/opt/cuda-9.0.176.1/
 
@@ -29,13 +29,14 @@ source /home/${STUDENT_ID}/miniconda3/bin/activate mlp
 devices=0,1,2,3
 
 CUDA_VISIBLE_DEVICES=$devices python3 /home/s1852803/unmt/XLM/train.py \
-    --exp_name test_enfr_mlm \
+    --exp_name test_engu_mlm_tlm \
     --dump_path /home/s1852803/unmt/XLM/dumped/ \
-    --data_path /home/s1852803/unmt/XLM/data/processed/en-fr/ \
-    --lgs 'en-fr' \
+    --data_path /home/s1852803/unmt/XLM/data/processed/XLM15/ \
+    --lgs 'en-gu' \
     --clm_steps '' \
-    --mlm_steps 'en,fr' \
-    --n_layers 6 \
+    --mlm_steps 'en,gu,en-gu' \
+    --emb_dim 1024 \
+    --n_layers 12 \
     --n_heads 8 \
     --dropout 0.1 \
     --attention_dropout 0.1 \
