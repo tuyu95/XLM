@@ -239,10 +239,10 @@ done
 # train en-gu bpe code and vocab
 cat $PARA_PATH/en-gu.en.all $PARA_PATH/en-gu.gu.all > $PARA_PATH/en-gu.engu.all
 $FASTBPE learnbpe 4000 $PARA_PATH/en-gu.engu.all > $MAIN_PATH/codes_engu
-$CODES_PATH=$MAIN_PATH/codes_engu
+# $CODES_PATH=$MAIN_PATH/codes_engu
 $FASTBPE applybpe $PARA_PATH/en-gu.engu.all.4000 $PARA_PATH/en-gu.engu.all $MAIN_PATH/codes_engu
 $FASTBPE getvocab $PARA_PATH/en-gu.engu.all.4000> $MAIN_PATH/vocab_engu
-$VOCAB_PATH=$MAIN_PATH/vocab_engu
+# $VOCAB_PATH=$MAIN_PATH/vocab_engu
 
 # split into train / valid / test
 split_data() {
@@ -272,7 +272,7 @@ done
 # apply BPE codes and binarize the parallel corpora
 for lg in $(echo $pair | sed -e 's/\-/ /g'); do
   for split in train valid test; do
-    $FASTBPE applybpe $PROCESSED_PATH/$pair.$lg.$split $PARA_PATH/$pair.$lg.$split $CODES_PATH
-    python preprocess.py $VOCAB_PATH $PROCESSED_PATH/$pair.$lg.$split
+    $FASTBPE applybpe $PROCESSED_PATH/$pair.$lg.$split $PARA_PATH/$pair.$lg.$split $MAIN_PATH/codes_engu
+    python preprocess.py $MAIN_PATH/vocab_engu $PROCESSED_PATH/$pair.$lg.$split
   done
 done
