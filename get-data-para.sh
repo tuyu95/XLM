@@ -15,8 +15,8 @@ PARA_PATH=$PWD/data/para
 PROCESSED_PATH=$PWD/data/processed/XLM15
 # CODES_PATH=$MAIN_PATH/guen.bpe
 # VOCAB_PATH=$MAIN_PATH/vocab.guen
-CODES_PATH=$MAIN_PATH/codes_xnli_15
-VOCAB_PATH=$MAIN_PATH/vocab_xnli_15
+# CODES_PATH=$MAIN_PATH/codes_xnli_15
+# VOCAB_PATH=$MAIN_PATH/vocab_xnli_15
 
 # tools paths
 TOOLS_PATH=$PWD/tools
@@ -36,7 +36,7 @@ mkdir -p $PROCESSED_PATH
 # Download and uncompress data
 #
 # en-gu
-if [ ! -f $PARA_PATH/bible.gu-en.tsv.gz ];
+if [ ! -f $PARA_PATH/bible.gu-en.tsv ];
 then
   wget http://data.statmt.org/wmt19/translation-task/bible.gu-en.tsv.gz -O $PARA_PATH/bible.gu-en.tsv.gz
   gzip -d $PARA_PATH/bible.gu-en.tsv.gz
@@ -44,7 +44,7 @@ then
   awk -F$'\t' '{print $2}' $PARA_PATH/bible.gu-en.tsv > $PARA_PATH/bi.gu-en.en
 fi
 
-if [ ! -f $PARA_PATH/govin-clean.gu-en.tsv.gz ];
+if [ ! -f $PARA_PATH/govin-clean.gu-en.tsv ];
 then
   wget http://data.statmt.org/wmt19/translation-task/govin-clean.gu-en.tsv.gz -O $PARA_PATH/govin-clean.gu-en.tsv.gz
   gzip -d $PARA_PATH/govin-clean.gu-en.tsv.gz
@@ -52,7 +52,7 @@ then
   awk -F$'\t' '{print $2}' $PARA_PATH/govin-clean.gu-en.tsv > $PARA_PATH/govin-clean.gu-en.en
 fi
 
-if [ ! -f $PARA_PATH.gu-en.tsv.gz ];
+if [ ! -f $PARA_PATH.wikipedia.gu-en.tsv ];
 then
   wget http://data.statmt.org/wmt19/translation-task/wikipedia.gu-en.tsv.gz -O $PARA_PATH/wikipedia.gu-en.tsv.gz
   gzip -d $PARA_PATH/wikipedia.gu-en.tsv.gz
@@ -60,7 +60,7 @@ then
   awk -F$'\t' '{print $2}' $PARA_PATH/wikipedia.gu-en.tsv > $PARA_PATH/wikipedia.gu-en.en
 fi
 
-if [ ! -f $PARA_PATH/opus.gu-en.tsv.gz ];
+if [ ! -f $PARA_PATH/opus.gu-en.tsv ];
 then
   wget http://data.statmt.org/wmt19/translation-task/opus.gu-en.tsv.gz -O $PARA_PATH/opus.gu-en.tsv.gz
   gzip -d $PARA_PATH/opus.gu-en.tsv.gz
@@ -235,6 +235,14 @@ for lg in $(echo $pair | sed -e 's/\-/ /g'); do
     cat $PARA_PATH/*.$pair.$lg | $TOKENIZE $lg | python $LOWER_REMOVE_ACCENT > $PARA_PATH/$pair.$lg.all
   fi
 done
+
+# train en-gu bpe code and vocab
+cat $PARA_PATH/en-gu.en.all $PARA_PATH/en-gu.gu.all > $PARA_PATH/en-gu.engu.all
+$FASTBPE learnbpe 4000 $PARA_PATH/en-gu.engu.all > $MAIN_PATH/codes_engu
+$CODES_PATH=$MAIN_PATH/codes_engu
+$FASTBPE applybpe $PARA_PATH/en-gu.engu.all.4000 $PARA_PATH/en-gu.engu.all $MAIN_PATH/codes_engu
+$FASTBPE getvocab $PARA_PATH/en-gu.engu.all.4000> $MAIN_PATH/vocab_engu
+$VOCAB_PATH=$MAIN_PATH/vocab_engu
 
 # split into train / valid / test
 split_data() {
