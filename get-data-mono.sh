@@ -103,7 +103,7 @@ SRC_TOK=$SRC_RAW.tok
 TGT_TOK=$TGT_RAW.tok
 
 # BPE / vocab files
-BPE_CODES=$PROC_PATH/codes
+# BPE_CODES=$PROC_PATH/codes
 SRC_VOCAB=$PROC_PATH/vocab.$SRC
 TGT_VOCAB=$PROC_PATH/vocab.$TGT
 FULL_VOCAB=$PROC_PATH/vocab.$SRC-$TGT
@@ -308,6 +308,10 @@ if ! [[ -f "$FULL_VOCAB" ]]; then
 fi
 echo "Full vocab in: $FULL_VOCAB"
 
+$SRC_VOCAB=$MAIN_PATH/vocab_engu
+$TGT_VOCAB=$MAIN_PATH/vocab_engu
+$FULL_VOCAB=$MAIN_PATH/vocab_engu
+
 # binarize data
 if ! [[ -f "$SRC_TRAIN_BPE.pth" ]]; then
   echo "Binarizing $SRC data..."
@@ -329,11 +333,11 @@ cd $PARA_PATH
 
 echo "Downloading parallel data..."
 # wget -c http://data.statmt.org/wmt18/translation-task/dev.tgz
-wget -c http://data.statmt.org/wmt19/translation-task/dev.tgz
-wget -c http://data.statmt.org/wmt19/translation-task/test.tgz
+# wget -c http://data.statmt.org/wmt19/translation-task/dev.tgz
+# wget -c http://data.statmt.org/wmt19/translation-task/test.tgz
 
 echo "Extracting parallel data..."
-tar -xzf dev.tgz
+# tar -xzf dev.tgz
 
 # check valid and test files are here
 if ! [[ -f "$PARA_SRC_VALID.sgm" ]]; then echo "$PARA_SRC_VALID.sgm is not found!"; exit; fi
