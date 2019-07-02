@@ -310,9 +310,9 @@ if ! [[ -f "$FULL_VOCAB" ]]; then
 fi
 echo "Full vocab in: $FULL_VOCAB"
 
-$SRC_VOCAB=$MAIN_PATH/vocab_engu
-$TGT_VOCAB=$MAIN_PATH/vocab_engu
-$FULL_VOCAB=$MAIN_PATH/vocab_engu
+SRC_VOCAB=$MAIN_PATH/vocab_engu
+TGT_VOCAB=$MAIN_PATH/vocab_engu
+FULL_VOCAB=$MAIN_PATH/vocab_engu
 
 # binarize data
 if ! [[ -f "$SRC_TRAIN_BPE.pth" ]]; then
