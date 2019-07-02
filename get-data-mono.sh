@@ -14,8 +14,8 @@ set -e
 N_MONO=4500000  # number of monolingual sentences for each language, 24.4 +28.5
 # CODES=60000     # number of BPE codes
 N_THREADS=16    # number of threads in data preprocessing
-BPE_CODES=$MAIN_PATH/codes_engu
-VOCAB_PATH=$MAIN_PATH/vocab_engu
+# BPE_CODES=$MAIN_PATH/codes_engu
+# VOCAB_PATH=$MAIN_PATH/vocab_engu
 
 #
 # Read arguments
@@ -272,6 +272,8 @@ fi
 #   $FASTBPE learnbpe $CODES $SRC_TOK $TGT_TOK > $BPE_CODES
 # fi
 # echo "BPE learned in $BPE_CODES"
+BPE_CODES=$MAIN_PATH/codes_engu
+# VOCAB_PATH=$MAIN_PATH/vocab_engu
 
 # apply BPE codes
 if ! [[ -f "$SRC_TRAIN_BPE" ]]; then
