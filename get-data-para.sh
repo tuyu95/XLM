@@ -238,10 +238,10 @@ done
 
 # train en-gu bpe code and vocab
 cat $PARA_PATH/en-gu.en.all $PARA_PATH/en-gu.gu.all > $PARA_PATH/en-gu.engu.all
-$FASTBPE learnbpe 4000 $PARA_PATH/en-gu.engu.all > $MAIN_PATH/codes_engu
+$FASTBPE learnbpe 15000 $PARA_PATH/en-gu.engu.all > $MAIN_PATH/codes_engu
 # $CODES_PATH=$MAIN_PATH/codes_engu
-$FASTBPE applybpe $PARA_PATH/en-gu.engu.all.4000 $PARA_PATH/en-gu.engu.all $MAIN_PATH/codes_engu
-$FASTBPE getvocab $PARA_PATH/en-gu.engu.all.4000> $MAIN_PATH/vocab_engu
+$FASTBPE applybpe $PARA_PATH/en-gu.engu.all.15000 $PARA_PATH/en-gu.engu.all $MAIN_PATH/codes_engu
+$FASTBPE getvocab $PARA_PATH/en-gu.engu.all.15000> $MAIN_PATH/vocab_engu
 # $VOCAB_PATH=$MAIN_PATH/vocab_engu
 
 # split into train / valid / test
