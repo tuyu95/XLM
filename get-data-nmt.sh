@@ -14,7 +14,8 @@ set -e
 N_MONO=4500000  # number of monolingual sentences for each language, 24.4 +28.5
 CODES=60000     # number of BPE codes
 N_THREADS=16    # number of threads in data preprocessing
-
+BPE_CODES=$MAIN_PATH/codes_engu
+VOCAB_PATH=$MAIN_PATH/vocab_engu
 
 #
 # Read arguments
@@ -266,11 +267,11 @@ if [ ! -f "$BPE_CODES" ] && [ -f "$RELOAD_CODES" ]; then
 fi
 
 # learn BPE codes
-if [ ! -f "$BPE_CODES" ]; then
-  echo "Learning BPE codes..."
-  $FASTBPE learnbpe $CODES $SRC_TOK $TGT_TOK > $BPE_CODES
-fi
-echo "BPE learned in $BPE_CODES"
+# if [ ! -f "$BPE_CODES" ]; then
+#   echo "Learning BPE codes..."
+#   $FASTBPE learnbpe $CODES $SRC_TOK $TGT_TOK > $BPE_CODES
+# fi
+# echo "BPE learned in $BPE_CODES"
 
 # apply BPE codes
 if ! [[ -f "$SRC_TRAIN_BPE" ]]; then
@@ -329,6 +330,7 @@ cd $PARA_PATH
 echo "Downloading parallel data..."
 # wget -c http://data.statmt.org/wmt18/translation-task/dev.tgz
 wget -c http://data.statmt.org/wmt19/translation-task/dev.tgz
+wget -c http://data.statmt.org/wmt19/translation-task/test.tgz
 
 echo "Extracting parallel data..."
 tar -xzf dev.tgz
