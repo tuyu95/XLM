@@ -208,15 +208,15 @@ fi
 cd $MONO_PATH
 
 # decompress monolingual data
-for FILENAME in $SRC/news*gz $TGT/news*gz; do
-  OUTPUT="${FILENAME::-3}"
-  if [ ! -f "$OUTPUT" ]; then
-    echo "Decompressing $FILENAME..."
-    gunzip -d $FILENAME
-  else
-    echo "$OUTPUT already decompressed."
-  fi
-done
+#for FILENAME in $SRC/news*gz $TGT/news*gz; do
+#  OUTPUT="${FILENAME::-3}"
+#  if [ ! -f "$OUTPUT" ]; then
+#    echo "Decompressing $FILENAME..."
+#    gunzip -d $FILENAME
+#  else
+#    echo "$OUTPUT already decompressed."
+#  fi
+#done
 
 # concatenate monolingual data files
 if ! [[ -f "$SRC_RAW" ]]; then
