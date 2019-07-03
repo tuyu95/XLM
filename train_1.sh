@@ -25,7 +25,7 @@ export PYTHON_PATH=$PATH
 
 source /home/${STUDENT_ID}/miniconda3/bin/activate mlp
 
-devices=0,1
+devices=0,1,2,3
 
 # python -m torch.distributed.launch --nproc_per_node=$NGPU /home/s1852803/unmt/XLM/train.py \
 
