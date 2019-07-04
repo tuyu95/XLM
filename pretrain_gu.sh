@@ -45,6 +45,5 @@ CUDA_VISIBLE_DEVICES=$devices python3 /home/s1852803/unmt/XLM/train.py \
     --bptt 128 \
     --optimizer adam,lr=0.0001 \
     --epoch_size 200000 \
-    --eval_bleu true \
     --validation_metrics _valid_mlm_ppl \
     --stopping_criterion _valid_mlm_ppl,10
