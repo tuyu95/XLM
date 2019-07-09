@@ -35,7 +35,7 @@ CUDA_VISIBLE_DEVICES=$devices python3 /home/s1852803/unmt/XLM/train.py \
     --lgs 'en-gu' \
     --clm_steps '' \
     --mlm_steps 'en,gu,en-gu' \
-    --emb_dim 1024 \
+    --emb_dim 512 \
     --n_layers 12 \
     --n_heads 8 \
     --dropout 0.1 \
