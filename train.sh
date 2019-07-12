@@ -49,7 +49,7 @@ CUDA_VISIBLE_DEVICES=$devices python3 /home/s1852803/unmt/XLM/train.py \
     --dropout 0.1 \
     --attention_dropout 0.1 \
     --gelu_activation true \
-    --tokens_per_batch 1000 \
+    --tokens_per_batch 2000 \
     --batch_size 16 \
     --bptt 128 \
     --optimizer adam_inverse_sqrt,beta1=0.9,beta2=0.98,lr=0.0001 \
