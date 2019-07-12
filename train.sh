@@ -2,10 +2,10 @@
 
 #SBATCH -N 1	  # nodes requested
 #SBATCH -n 1	  # tasks requested
-#SBATCH --partition=Standard
-#SBATCH --gres=gpu:2
+#SBATCH --partition=General_Usage
+#SBATCH --gres=gpu:4
 #SBATCH --mem=12000  # memory in Mb
-#SBATCH --time=0-08:00:00
+#SBATCH --time=0-80:00:00
 
 export CUDA_HOME=/opt/cuda-9.0.176.1/
 
@@ -25,7 +25,7 @@ export PYTHON_PATH=$PATH
 
 source /home/${STUDENT_ID}/miniconda3/bin/activate mlp
 
-devices=0,1
+devices=0,1,2,3
 
 # python -m torch.distributed.launch --nproc_per_node=$NGPU /home/s1852803/unmt/XLM/train.py \
 
@@ -33,7 +33,7 @@ devices=0,1
 CUDA_VISIBLE_DEVICES=$devices python3 /home/s1852803/unmt/XLM/train.py \
     --exp_name unsupMT_engu \
     --dump_path /home/s1852803/unmt/XLM/dumped/ \
-    --reload_model /home/s1852803/unmt/XLM/mlm_engu_ppl.pth,/home/s1852803/unmt/XLM/mlm_engu_ppl.pth \
+    --reload_model /home/s1852803/unmt/XLM/best-valid_mlm_ppl.pth,/home/s1852803/unmt/XLM/best-valid_mlm_ppl.pth \
     --data_path /home/s1852803/unmt/XLM/data/processed/en-gu/ \
     --lgs 'en-gu' \
     --ae_steps 'en,gu' \
@@ -43,7 +43,7 @@ CUDA_VISIBLE_DEVICES=$devices python3 /home/s1852803/unmt/XLM/train.py \
     --word_blank 0.1 \
     --lambda_ae '0:1,100000:0.1,300000:0' \
     --encoder_only false \
-    --emb_dim 1024 \
+    --emb_dim 512 \
     --n_layers 6 \
     --n_heads 8 \
     --dropout 0.1 \
