@@ -454,8 +454,8 @@ class Trainer(object):
 
         # reload model parameters and optimizers
         for name in self.MODEL_NAMES:
-            getattr(self, name).load_state_dict(data[name])
-            # getattr(self, name).load_state_dict({k[len('module.'):]: v for k, v in data[name].items()})
+            # getattr(self, name).load_state_dict(data[name])
+            getattr(self, name).load_state_dict({k[len('module.'):]: v for k, v in data[name].items()})
             self.optimizers[name].load_state_dict(data[name + '_optimizer'])
 
         # reload main metrics
