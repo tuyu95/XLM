@@ -12,7 +12,7 @@ pair=$1  # input language pair
 # data paths
 MAIN_PATH=$PWD
 PARA_PATH=$PWD/data/para
-PROCESSED_PATH=$PWD/data/processed/XLM15
+PROCESSED_PATH=$PWD/data/processed/XLM
 # CODES_PATH=$MAIN_PATH/guen.bpe
 # VOCAB_PATH=$MAIN_PATH/vocab.guen
 # CODES_PATH=$MAIN_PATH/codes_xnli_15
@@ -237,11 +237,11 @@ for lg in $(echo $pair | sed -e 's/\-/ /g'); do
 done
 
 # train en-gu bpe code and vocab
-cat $PARA_PATH/en-gu.en.all $PARA_PATH/en-gu.gu.all $MAIN_PATH/data/mono/en/all.en.tok $MAIN_PATH/data/mono/gu/all.gu.tok > $PARA_PATH/en-gu.engu.all
-$FASTBPE learnbpe 15000 $PARA_PATH/en-gu.en.all $PARA_PATH/en-gu.gu.all > $MAIN_PATH/codes_engu
+# cat $PARA_PATH/en-gu.en.all $PARA_PATH/en-gu.gu.all $MAIN_PATH/data/mono/en/all.en.tok $MAIN_PATH/data/mono/gu/all.gu.tok > $PARA_PATH/en-gu.engu.all
+# $FASTBPE learnbpe 15000 $PARA_PATH/en-gu.en.all $PARA_PATH/en-gu.gu.all > $MAIN_PATH/codes_engu
 # $CODES_PATH=$MAIN_PATH/codes_engu
-$FASTBPE applybpe $PARA_PATH/en-gu.engu.all.15000 $PARA_PATH/en-gu.engu.all $MAIN_PATH/codes_engu
-$FASTBPE getvocab $PARA_PATH/en-gu.engu.all.15000> $MAIN_PATH/vocab_engu
+# $FASTBPE applybpe $PARA_PATH/en-gu.engu.all.15000 $PARA_PATH/en-gu.engu.all $MAIN_PATH/codes_engu
+# $FASTBPE getvocab $PARA_PATH/en-gu.engu.all.15000> $MAIN_PATH/vocab_engu
 # $VOCAB_PATH=$MAIN_PATH/vocab_engu
 
 # split into train / valid / test
@@ -272,7 +272,7 @@ done
 # apply BPE codes and binarize the parallel corpora
 for lg in $(echo $pair | sed -e 's/\-/ /g'); do
   for split in train valid test; do
-    $FASTBPE applybpe $PROCESSED_PATH/$pair.$lg.$split $PARA_PATH/$pair.$lg.$split $MAIN_PATH/codes_engu
-    python preprocess.py $MAIN_PATH/vocab_engu $PROCESSED_PATH/$pair.$lg.$split
+    $FASTBPE applybpe $PROCESSED_PATH/$pair.$lg.$split $PARA_PATH/$pair.$lg.$split $MAIN_PATH/codes
+    python preprocess.py $MAIN_PATH/vocab.en-gu $PROCESSED_PATH/$pair.$lg.$split
   done
 done
