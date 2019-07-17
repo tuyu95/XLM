@@ -96,6 +96,12 @@ WMT16_SCRIPTS=$TOOLS_PATH/wmt16-scripts
 NORMALIZE_ROMANIAN=$WMT16_SCRIPTS/preprocess/normalise-romanian.py
 REMOVE_DIACRITICS=$WMT16_SCRIPTS/preprocess/remove-diacritics.py
 
+# BPE / vocab files
+BPE_CODES=$PROC_PATH/codes
+SRC_VOCAB=$PROC_PATH/vocab.$SRC
+TGT_VOCAB=$PROC_PATH/vocab.$TGT
+FULL_VOCAB=$PROC_PATH/vocab.$SRC-$TGT
+
 # raw and tokenized files
 SRC_RAW=$MONO_PATH/$SRC/all.$SRC
 TGT_RAW=$MONO_PATH/$TGT/all.$TGT
