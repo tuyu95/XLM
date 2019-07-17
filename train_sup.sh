@@ -31,7 +31,7 @@ CUDA_VISIBLE_DEVICES=$devices python3 /home/s1852803/unmt/XLM/train.py \
     --exp_name supMT_engu \
     --dump_path /home/s1852803/unmt/XLM/dumped/ \
     --reload_model /home/s1852803/unmt/XLM/best-valid_mlm_ppl.pth,/home/s1852803/unmt/XLM/best-valid_mlm_ppl.pth \
-    --data_path /home/s1852803/unmt/XLM/data/processed/en-fr/ \
+    --data_path /home/s1852803/unmt/XLM/data/processed/en-gu/ \
     --lgs 'en-gu' \
     --mt_steps "en-gu,gu-en" \
     --bt_steps 'en-gu-en,gu-en-gu' \
