@@ -2,7 +2,7 @@
 
 #SBATCH -N 1	  # nodes requested
 #SBATCH -n 1	  # tasks requested
-#SBATCH --partition=LongJobs
+#SBATCH --partition=General_Usage
 #SBATCH --gres=gpu:2
 #SBATCH --mem=12000  # memory in Mb
 #SBATCH --time=0-80:00:00
@@ -31,20 +31,20 @@ devices=0,1
 
 #export NGPU=8; python -m torch.distributed.launch --nproc_per_node=$NGPU /home/s1852803/unmt/XLM/train.py \
 CUDA_VISIBLE_DEVICES=$devices python3 /home/s1852803/unmt/XLM/train.py \
-    --exp_name unsupMT_enfr \
+    --exp_name unsupMT_engu \
     --dump_path /home/s1852803/unmt/XLM/dumped/ \
-    --reload_model /home/s1852803/unmt/XLM/best-valid_mlm_ppl.pth,/home/s1852803/unmt/XLM/best-valid_mlm_ppl.pth \
-    --data_path /home/s1852803/unmt/XLM/data/processed/en-fr/ \
-    --lgs 'en-fr' \
-    --ae_steps 'en,fr' \
-    --bt_steps 'en-fr-en,fr-en-fr' \
+    --reload_model /home/s1852803/unmt/XLM/best-valid_mlm_tlm_ppl.pth,/home/s1852803/unmt/XLM/best-valid_mlm_tlm_ppl.pth \
+    --data_path /home/s1852803/unmt/XLM/data/processed/en-gu/ \
+    --lgs 'en-gu' \
+    --ae_steps 'en,gu' \
+    --bt_steps 'en-gu-en,gu-en-gu' \
     --word_shuffle 3 \
     --word_dropout 0.1 \
     --word_blank 0.1 \
     --lambda_ae '0:1,100000:0.1,300000:0' \
     --encoder_only false \
     --emb_dim 512 \
-    --n_layers 6 \
+    --n_layers 12 \
     --n_heads 8 \
     --dropout 0.1 \
     --attention_dropout 0.1 \
@@ -55,5 +55,5 @@ CUDA_VISIBLE_DEVICES=$devices python3 /home/s1852803/unmt/XLM/train.py \
     --optimizer adam_inverse_sqrt,beta1=0.9,beta2=0.98,lr=0.0001 \
     --epoch_size 200000 \
     --eval_bleu true \
-    --stopping_criterion valid_en-fr_mt_bleu,10 \
-    --validation_metrics valid_en-fr_mt_bleu
+    --stopping_criterion valid_gu-en_mt_bleu,10 \
+    --validation_metrics valid_gu-en_mt_bleu
