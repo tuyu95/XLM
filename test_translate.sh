@@ -29,7 +29,7 @@ devices=0,1
 
 cd /home/s1852803/unmt/XLM
 
-cat source_sentences.bpe | \
+cat data/processed/en-fr/test.en-fr.fr | \
 CUDA_VISIBLE_DEVICES=$devices python3 /home/s1852803/unmt/XLM/translate.py --exp_name translate \
 --model_path /home/s1852803/unmt/XLM/dumped/unsupMT_enfr/360935/best-valid_en-fr_mt_bleu.pth \
 --output_path /home/s1852803/unmt/XLM/output \
